@@ -12,4 +12,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EndProject.Data\EndProject.Data.csproj" />
+  </ItemGroup>
+
 </Project>
