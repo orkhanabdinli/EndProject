@@ -112,6 +112,43 @@ namespace EndProject.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("EndProject.Core.Entities.FriendShip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("User1Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("User2Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("User1Id");
+
+                    b.HasIndex("User2Id");
+
+                    b.ToTable("FriendShip");
+                });
+
             modelBuilder.Entity("EndProject.Core.Entities.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -278,6 +315,25 @@ namespace EndProject.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EndProject.Core.Entities.FriendShip", b =>
+                {
+                    b.HasOne("EndProject.Core.Entities.AppUser", "User1")
+                        .WithMany("Friendship1")
+                        .HasForeignKey("User1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EndProject.Core.Entities.AppUser", "User2")
+                        .WithMany("Friendship2")
+                        .HasForeignKey("User2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
+                });
+
             modelBuilder.Entity("EndProject.Core.Entities.Post", b =>
                 {
                     b.HasOne("EndProject.Core.Entities.AppUser", "User")
@@ -342,6 +398,10 @@ namespace EndProject.Data.Migrations
 
             modelBuilder.Entity("EndProject.Core.Entities.AppUser", b =>
                 {
+                    b.Navigation("Friendship1");
+
+                    b.Navigation("Friendship2");
+
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
