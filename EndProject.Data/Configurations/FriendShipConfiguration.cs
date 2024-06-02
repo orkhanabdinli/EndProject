@@ -14,9 +14,9 @@ public class FriendShipConfiguration : IEntityTypeConfiguration<FriendShip>
                 .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(f => f.User2)
-            .WithMany(u => u.Friendship2)
-            .HasForeignKey(f => f.User2Id)
-            .OnDelete(DeleteBehavior.Restrict);
+               .WithMany(u => u.Friendship2)
+               .HasForeignKey(f => f.User2Id)
+               .OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(f => f.Status)
             .IsRequired();
