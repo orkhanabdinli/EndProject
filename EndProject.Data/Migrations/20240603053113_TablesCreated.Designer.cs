@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EndProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240602182753_TablesCreated")]
+    [Migration("20240603053113_TablesCreated")]
     partial class TablesCreated
     {
         /// <inheritdoc />
@@ -150,7 +150,7 @@ namespace EndProject.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("EndProject.Core.Entities.FriendShip", b =>
@@ -187,7 +187,40 @@ namespace EndProject.Data.Migrations
 
                     b.HasIndex("User2Id");
 
-                    b.ToTable("FriendShip");
+                    b.ToTable("FriendShips");
+                });
+
+            modelBuilder.Entity("EndProject.Core.Entities.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("EndProject.Core.Entities.Post", b =>
@@ -394,6 +427,25 @@ namespace EndProject.Data.Migrations
                     b.Navigation("User2");
                 });
 
+            modelBuilder.Entity("EndProject.Core.Entities.Like", b =>
+                {
+                    b.HasOne("EndProject.Core.Entities.Post", "Post")
+                        .WithMany("Likes")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("EndProject.Core.Entities.AppUser", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EndProject.Core.Entities.Post", b =>
                 {
                     b.HasOne("EndProject.Core.Entities.AppUser", "User")
@@ -464,12 +516,16 @@ namespace EndProject.Data.Migrations
 
                     b.Navigation("Friendship2");
 
+                    b.Navigation("Likes");
+
                     b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("EndProject.Core.Entities.Post", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }
