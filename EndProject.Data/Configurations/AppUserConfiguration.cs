@@ -22,11 +22,5 @@ public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
                .HasMaxLength(10);
         builder.Property(x => x.Bio)
                .HasMaxLength(300);
-
-        builder
-            .HasMany(x => x.Comments)
-            .WithOne(c => c.User)
-            .HasForeignKey(c => c.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

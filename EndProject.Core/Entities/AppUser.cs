@@ -14,5 +14,7 @@ public class AppUser : IdentityUser
     public List<FriendShip>? Friendship2 { get; set; }
     public List<Comment>? Comments { get; set; }
     public List<Like>? Likes { get; set; }
+    public List<Conversation>? ConversationUser1 { get; set; }
+    public List<Conversation>? ConversationUser2 { get; set; }
 
 }
