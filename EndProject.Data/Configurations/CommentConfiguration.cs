@@ -19,9 +19,9 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
                .OnDelete(DeleteBehavior.Cascade);
 
         builder
-            .HasOne(c => c.User)
-            .WithMany(x => x.Comments)
-            .HasForeignKey(c => c.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
+               .HasOne(c => c.User)
+               .WithMany(x => x.Comments)
+               .HasForeignKey(c => c.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

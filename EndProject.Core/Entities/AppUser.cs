@@ -16,5 +16,5 @@ public class AppUser : IdentityUser
     public List<Like>? Likes { get; set; }
     public List<Conversation>? ConversationUser1 { get; set; }
     public List<Conversation>? ConversationUser2 { get; set; }
-
+    public List<Message>? Messages { get; set; }
 }
