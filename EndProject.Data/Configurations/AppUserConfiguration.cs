@@ -20,7 +20,11 @@ public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
         builder.Property(x => x.PhoneNumber)
                .IsRequired()
                .HasMaxLength(10);
-        builder.Property(x => x.Bio)
-               .HasMaxLength(300);
+
+        builder
+            .HasOne(x => x.UserAbout)
+            .WithOne(x => x.User)
+            .HasForeignKey<UserAbout>(x => x.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
