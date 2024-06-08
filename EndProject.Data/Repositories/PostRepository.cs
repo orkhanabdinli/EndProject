@@ -4,9 +4,9 @@ using EndProject.Data.Contexts;
 
 namespace EndProject.Data.Repositories;
 
-public class LikeRepository : GenericRepository<Like>, ILikeRepository
+public class PostRepository : GenericRepository<Post>, IPostRepository
 {
-    public LikeRepository(AppDbContext context) : base(context)
+    public PostRepository(AppDbContext context) : base(context)
     {
     }
 }
