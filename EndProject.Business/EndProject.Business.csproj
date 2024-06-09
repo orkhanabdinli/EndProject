@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="CustomExceptions\" />
-    <Folder Include="DTOs\NewFolder\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
