@@ -1,5 +1,6 @@
 using EndProject.Core.Entities;
 using EndProject.Data.Contexts;
+using EndProject.Data.ServiceRegistration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddRepository();
 builder.Services.AddControllers();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
