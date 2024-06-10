@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="CustomExceptions\" />
-    <Folder Include="Services\" />
+    <Folder Include="DTOValidators\" />
   </ItemGroup>
 
   <ItemGroup>
