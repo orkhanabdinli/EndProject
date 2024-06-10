@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CustomExceptions\" />
     <Folder Include="DTOValidators\" />
   </ItemGroup>
 
