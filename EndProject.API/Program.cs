@@ -1,3 +1,4 @@
+using EndProject.Business.ServiceRegistration;
 using EndProject.Core.Entities;
 using EndProject.Data.Contexts;
 using EndProject.Data.ServiceRegistration;
@@ -46,6 +47,7 @@ builder.Services.AddAuthentication(opt =>
 });
 
 builder.Services.AddRepository();
+builder.Services.AddService();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {

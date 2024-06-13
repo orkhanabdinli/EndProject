@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EndProject.Business.DTOs.UserDTOs;
+using EndProject.Business.Services.Interfaces;
+using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,18 +12,38 @@ namespace EndProject.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-        public UserController(RoleManager<IdentityRole> roleManager)
+        private readonly IUserService _userService;
+        public UserController(RoleManager<IdentityRole> roleManager,
+            IUserService userService)
         {
             _roleManager = roleManager;
+            _userService = userService;
         }
-        [HttpGet("")]
-        public async Task<IActionResult> CreateRole()
+        //[HttpGet("")]
+        //public async Task<IActionResult> CreateRole()
+        //{
+        //    var role1 = new IdentityRole("Member");
+
+        //    await _roleManager.CreateAsync(role1);
+
+        //    return Ok();
+        //}
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Register(UserRegisterDTO registerDTO)
         {
-            var role1 = new IdentityRole("Member");
-
-            await _roleManager.CreateAsync(role1);
-
-            return Ok();
+            try
+            {
+                await _userService.RegisterAsync(registerDTO);
+                return Ok();
+            }
+            catch (AlreadyExistException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

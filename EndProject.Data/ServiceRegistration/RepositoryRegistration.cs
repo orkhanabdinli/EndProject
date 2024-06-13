@@ -21,6 +21,7 @@ public static class RepositoryRegistiration
         services.AddScoped<IMessageRepository, MessageRepository>();
         services.AddScoped<IConversationRepository, ConversationRepository>();
         services.AddScoped<IAppUserRepository, AppUserRepository>();
+        services.AddScoped<IUserAboutRepository, UserAboutRepository>();
+        services.AddScoped<IUserProfileMediaRepository, UserProfileMediaRepository>();
     }
-
 }

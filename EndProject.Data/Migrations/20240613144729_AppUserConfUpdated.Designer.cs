@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EndProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240613112812_UserAboutTableUpdated")]
-    partial class UserAboutTableUpdated
+    [Migration("20240613144729_AppUserConfUpdated")]
+    partial class AppUserConfUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,9 +79,7 @@ namespace EndProject.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -699,7 +697,8 @@ namespace EndProject.Data.Migrations
                 {
                     b.HasOne("EndProject.Core.Entities.AppUser", "User")
                         .WithMany("UserProfileMedias")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });
