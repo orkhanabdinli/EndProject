@@ -1,9 +1,9 @@
 ﻿using EndProject.Business.DTOs.UserDTOs;
 using EndProject.Business.Services.Interfaces;
 using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Authentication;
 
 namespace EndProject.API.Controllers
 {
@@ -28,6 +28,24 @@ namespace EndProject.API.Controllers
 
         //    return Ok();
         //}
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login(UserLoginDTO loginDTO)
+        {
+            try
+            {
+                return Ok(await _userService.LoginAsync(loginDTO));
+            }
+            catch (InvalidCredentialException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("[action]")]
         public async Task<IActionResult> Register(UserRegisterDTO registerDTO)
         {
