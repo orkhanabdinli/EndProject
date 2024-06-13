@@ -31,10 +31,10 @@ public class TokenService : ITokenService
 
         List<Claim> Claims = new List<Claim>()
         {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Name,user.UserName),
             new Claim(JwtRegisteredClaimNames.Email,user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
         };
         var roles = await _userManager.GetRolesAsync(user);
         Claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
@@ -42,7 +42,7 @@ public class TokenService : ITokenService
             _configuration["JWT:issuer"],
             _configuration["JWT:audience"],
             claims: Claims,
-            expires: DateTime.UtcNow.AddHours(4),
+            expires: DateTime.UtcNow.AddHours(5),
             signingCredentials: credentials);
 
         var AccessToken = new JwtSecurityTokenHandler().WriteToken(token);

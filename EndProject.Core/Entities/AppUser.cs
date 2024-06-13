@@ -17,4 +17,5 @@ public class AppUser : IdentityUser
     public List<Conversation>? ConversationUser1 { get; set; }
     public List<Conversation>? ConversationUser2 { get; set; }
     public List<Message>? Messages { get; set; }
+    public List<UserProfileMedia>? UserProfileMedias { get; set; }
 }

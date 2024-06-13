@@ -12,5 +12,8 @@ public class UserAboutConfiguration : IEntityTypeConfiguration<UserAbout>
                .HasMaxLength(300);
         builder.Property(x => x.Country)
                .HasMaxLength(100);
+        builder.Property(x => x.Gender)
+               .IsRequired()
+               .HasMaxLength(50);
     }
 }

@@ -23,8 +23,4 @@
     <ProjectReference Include="..\EndProject.Business\EndProject.Business.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
