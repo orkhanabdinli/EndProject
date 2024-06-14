@@ -1,6 +1,7 @@
 ﻿using EndProject.MVC.Models;
 using EndProject.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace EndProject.MVC.Controllers
 {
@@ -19,11 +20,7 @@ namespace EndProject.MVC.Controllers
         {
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
-        {
-            return;
-        }
+
+        
     }
 }
