@@ -55,5 +55,32 @@ namespace EndProject.MVC.Controllers
             }
             return View(loginViewModel);
         }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var dataStr = JsonConvert.SerializeObject(registerViewModel);
+                var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(baseAdress + "/User/Register", stringContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Login", "User");
+                }
+                else
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    var apiError = JsonConvert.DeserializeObject<ErrorViewModel>(errorResponse);
+                    ModelState.AddModelError(string.Empty, apiError.Message);
+                }
+            }
+            return View(registerViewModel);
+        }
+
     }
 }

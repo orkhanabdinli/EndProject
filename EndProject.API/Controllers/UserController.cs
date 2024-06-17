@@ -57,11 +57,11 @@ namespace EndProject.API.Controllers
             }
             catch (AlreadyExistException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ErrorDTO { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ErrorDTO { Message = ex.Message });
             }
         }
     }
