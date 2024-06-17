@@ -1,4 +1,5 @@
-﻿using EndProject.Business.DTOs.UserDTOs;
+﻿using EndProject.Business.DTOs;
+using EndProject.Business.DTOs.UserDTOs;
 using EndProject.Business.Services.Interfaces;
 using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
 using Microsoft.AspNetCore.Identity;
@@ -38,11 +39,11 @@ namespace EndProject.API.Controllers
             }
             catch (InvalidCredentialException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ErrorDTO { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new ErrorDTO { Message = ex.Message });
             }
         }
 
