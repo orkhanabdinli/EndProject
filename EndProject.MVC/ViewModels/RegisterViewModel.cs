@@ -28,7 +28,7 @@ public class RegisterViewModel
     [DataType(DataType.Password)]
     public string ConfirmPassword { get; set; }
     [DataType(DataType.Text)]
-    [StringLength(15)]
+    [StringLength(30)]
     public string Gender { get; set; }
     [DataType(DataType.Text)]
     [StringLength(30)]

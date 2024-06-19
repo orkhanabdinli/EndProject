@@ -49,7 +49,7 @@ public class UserService : IUserService
         var user = await _userManager.FindByEmailAsync(userLoginDTO.Email);
         if (user is null) throw new InvalidCredentialsException(401, "Incorrect username or password");
         var result = await _signInManager.PasswordSignInAsync(user, userLoginDTO.Password, false, false);
-        if (!result.Succeeded) throw new InvalidCredentialsException("Invalid Credentials");
+        if (!result.Succeeded) throw new InvalidCredentialsException("Incorrect username or password");
 
         var tokens = await _tokenService.GenerateTokenAsync(user);
         tokens.UserId = user.Id;

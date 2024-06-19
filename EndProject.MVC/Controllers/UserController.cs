@@ -28,30 +28,23 @@ namespace EndProject.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            var dataStr = JsonConvert.SerializeObject(loginViewModel);
-            var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync(baseAdress + "/User/Login", stringContent);
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                var tokenResponse = await response.Content.ReadFromJsonAsync<TokenViewModel>();
-                if (tokenResponse != null)
+                var client = _httpClientFactory.CreateClient();
+                var response = await client.PostAsJsonAsync(baseAdress + "/User/Login", loginViewModel);
+                if (response.IsSuccessStatusCode)
                 {
+                    var tokenResponse = await response.Content.ReadFromJsonAsync<TokenViewModel>();
                     HttpContext.Session.SetString("JWToken", tokenResponse.AccesToken);
                     HttpContext.Response.Cookies.Append("UserId", tokenResponse.UserId);
-                    TempData["Successed"] = "Login successful!";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid response from server.");
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    var apiError = JsonConvert.DeserializeObject<ErrorViewModel>(errorResponse);
+                    ModelState.AddModelError(string.Empty, apiError.Message);
                 }
-            }
-            else
-            {
-                var errorResponse = await response.Content.ReadAsStringAsync();
-                var apiError = JsonConvert.DeserializeObject<ErrorViewModel>(errorResponse);
-                ModelState.AddModelError(string.Empty, apiError.Message);
             }
             return View(loginViewModel);
         }
