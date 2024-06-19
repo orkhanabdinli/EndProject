@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sociala - Social Network App HTML Template </title>
 
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/feather.css">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon.png">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/emoji.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/emoji.css">
 
-    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="~/css/lightbox.css">
 
 </head>
 
@@ -30,10 +30,10 @@
         <!-- navigation top-->
         <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
-                <a href="index.html"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">DostLooK. </span> </a>
-                <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
-                <a href="default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
-                <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <a asp-action="index" asp-controller="home"><i class="feather-zap text-success display1-size me-2 ms-0"></i><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">DostLooK. </span></a>
+                <a href="~/#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <a href="~/default-video.html" class="mob-menu me-2"><i class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                <a href="~/#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
                 <button class="nav-menu me-0 ms-2"></button>
             </div>
 
@@ -43,13 +43,13 @@
                     <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
                 </div>
             </form>
-            <a href="default.html" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
-            <a href="default-storie.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="default-group.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
-            <a href="shop-2.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="~/default.html" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg alert-primary btn-round-lg theme-dark-bg text-current "></i></a>
+            <a href="~/default-storie.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-zap font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="~/default-video.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-video font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="~/default-group.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-user font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
+            <a href="~/shop-2.html" class="p-2 text-center ms-0 menu-icon center-menu-icon"><i class="feather-shopping-bag font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
 
-            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
+            <a href="~/#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
 
                 <h4 class="fw-700 font-xss mb-4">Notification</h4>
@@ -75,7 +75,7 @@
                     <h6 class="text-grey-500 fw-500 font-xssss lh-4">Mobile Apps UI Designer is require..</h6>
                 </div>
             </div>
-            <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a>
+            <a href="~/#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i class="feather-message-square font-xl text-current"></i></a>
             <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
                 <i class="feather-settings animation-spin d-inline-block font-xl text-current"></i>
                 <div class="dropdown-menu-settings switchcolor-wrap">
@@ -180,7 +180,7 @@
             </div>
 
 
-            <a href="default-settings.html" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <a asp-action="index" asp-controller="usersettings" class="p-0 ms-3 menu-icon"><img src="images/profile-4.png" alt="user" class="w40 mt--1"></a>
 
         </div>
         <!-- navigation top -->
@@ -192,30 +192,29 @@
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>New </span>Feeds</div>
                         <ul class="mb-1 top-content">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default.html" class="nav-content-bttn open-font"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
-                            <li><a href="default-badge.html" class="nav-content-bttn open-font"><i class="feather-award btn-round-md bg-red-gradiant me-3"></i><span>Badges</span></a></li>
-                            <li><a href="default-storie.html" class="nav-content-bttn open-font"><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
-                            <li><a href="default-group.html" class="nav-content-bttn open-font"><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
-                            <li><a href="user-page.html" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>Author Profile </span></a></li>
+                            <li><a href="~/default.html" class="nav-content-bttn open-font"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
+                            <li><a href="~/default-storie.html" class="nav-content-bttn open-font"><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
+                            <li><a href="~/default-group.html" class="nav-content-bttn open-font"><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
+                            <li><a href="~/user-page.html" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>Author Profile </span></a></li>
                         </ul>
                     </div>
 
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>More </span>Pages</div>
                         <ul class="mb-3">
-                            <li><a href="default-email-box.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
-                            <li><a href="default-hotel.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
-                            <li><a href="default-event.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
-                            <li><a href="default-live-stream.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>
+                            <li><a href="~/default-email-box.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-inbox me-3"></i><span>Email Box</span><span class="circle-count bg-warning mt-1">584</span></a></li>
+                            <li><a href="~/default-hotel.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-home me-3"></i><span>Near Hotel</span></a></li>
+                            <li><a href="~/default-event.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Latest Event</span></a></li>
+                            <li><a href="~/default-live-stream.html" class="nav-content-bttn open-font"><i class="font-xl text-current feather-youtube me-3"></i><span>Live Stream</span></a></li>
                         </ul>
                     </div>
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
                         <ul class="mb-1">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="default-settings.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
-                            <li><a href="default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
-                            <li><a href="default-message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
+                            <li><a href="~/default-settings.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
+                            <li><a href="~/default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
+                            <li><a href="~/default-message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -270,7 +269,7 @@
                                 <img src="images/user-8.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Hurin Seary</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Hurin Seary</a>
                             </h3>
                             <span class="badge badge-primary text-white badge-pill fw-500 mt-0">2</span>
                         </li>
@@ -279,7 +278,7 @@
                                 <img src="images/user-7.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Victor Exrixon</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Victor Exrixon</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -288,7 +287,7 @@
                                 <img src="images/user-6.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Surfiya Zakir</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Surfiya Zakir</a>
                             </h3>
                             <span class="bg-warning ms-auto btn-round-xss"></span>
                         </li>
@@ -297,7 +296,7 @@
                                 <img src="images/user-5.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Goria Coast</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Goria Coast</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -306,7 +305,7 @@
                                 <img src="images/user-4.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Hurin Seary</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Hurin Seary</a>
                             </h3>
                             <span class="badge mt-0 text-grey-500 badge-pill pe-0 font-xsssss">4:09 pm</span>
                         </li>
@@ -315,7 +314,7 @@
                                 <img src="images/user-3.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">David Goria</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">David Goria</a>
                             </h3>
                             <span class="badge mt-0 text-grey-500 badge-pill pe-0 font-xsssss">2 days</span>
                         </li>
@@ -324,7 +323,7 @@
                                 <img src="images/user-2.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Seary Victor</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Seary Victor</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -333,7 +332,7 @@
                                 <img src="images/user-12.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Ana Seary</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Ana Seary</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -347,7 +346,7 @@
 
                             <span class="btn-round-sm bg-primary-gradiant me-3 ls-3 text-white font-xssss fw-700">UD</span>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Studio Express</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Studio Express</a>
                             </h3>
                             <span class="badge mt-0 text-grey-500 badge-pill pe-0 font-xsssss">2 min</span>
                         </li>
@@ -355,7 +354,7 @@
 
                             <span class="btn-round-sm bg-gold-gradiant me-3 ls-3 text-white font-xssss fw-700">AR</span>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Armany Design</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Armany Design</a>
                             </h3>
                             <span class="bg-warning ms-auto btn-round-xss"></span>
                         </li>
@@ -363,7 +362,7 @@
 
                             <span class="btn-round-sm bg-mini-gradiant me-3 ls-3 text-white font-xssss fw-700">UD</span>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">De fabous</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">De fabous</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -376,7 +375,7 @@
 
                             <span class="btn-round-sm bg-primary-gradiant me-3 ls-3 text-white font-xssss fw-700">AB</span>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Armany Seary</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Armany Seary</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -384,7 +383,7 @@
 
                             <span class="btn-round-sm bg-gold-gradiant me-3 ls-3 text-white font-xssss fw-700">SD</span>
                             <h3 class="fw-700 mb-0 mt-0">
-                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Entropio Inc</a>
+                                <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="~/#">Entropio Inc</a>
                             </h3>
                             <span class="bg-success ms-auto btn-round-xss"></span>
                         </li>
@@ -399,11 +398,11 @@
         <!-- right chat -->
 
         <div class="app-footer border-0 shadow-lg bg-primary-gradiant">
-            <a href="default.html" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
-            <a href="default-video.html" class="nav-content-bttn"><i class="feather-package"></i></a>
-            <a href="default-live-stream.html" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>
-            <a href="shop-2.html" class="nav-content-bttn"><i class="feather-layers"></i></a>
-            <a href="default-settings.html" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
+            <a href="~/default.html" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
+            <a href="~/default-video.html" class="nav-content-bttn"><i class="feather-package"></i></a>
+            <a href="~/default-live-stream.html" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>
+            <a href="~/shop-2.html" class="nav-content-bttn"><i class="feather-layers"></i></a>
+            <a href="~/default-settings.html" class="nav-content-bttn"><img src="images/female-profile.png" alt="user" class="w30 shadow-xss"></a>
         </div>
 
         <div class="app-header-search">
@@ -413,7 +412,7 @@
                     <i class="input-icon">
                         <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
                     </i>
-                    <a href="#" class="ms-1 mt-1 d-inline-block close searchbox-close">
+                    <a href="~/#" class="ms-1 mt-1 d-inline-block close searchbox-close">
                         <i class="ti-close font-xs"></i>
                     </a>
                 </div>
@@ -454,7 +453,7 @@
                     </figure>
                     <h5 class="fw-700 text-primary font-xssss mt-1 mb-1">Hendrix Stamp</h5>
                     <h4 class="text-grey-500 font-xsssss mt-0 mb-0"><span class="d-inline-block bg-success btn-round-xss m-0"></span> Available</h4>
-                    <a href="#" class="font-xssss position-absolute right-0 top-0 mt-3 me-4"><i class="ti-close text-grey-900 mt-2 d-inline-block"></i></a>
+                    <a href="~/#" class="font-xssss position-absolute right-0 top-0 mt-3 me-4"><i class="ti-close text-grey-900 mt-2 d-inline-block"></i></a>
                 </div>
             </div>
             <div class="modal-popup-body w-100 p-3 h-auto">
@@ -478,10 +477,10 @@
 
 
 
-    <script src="js/plugin.js"></script>
+    <script src="~/js/plugin.js"></script>
 
-    <script src="js/lightbox.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="~/js/lightbox.js"></script>
+    <script src="~/js/scripts.js"></script>
 
 
 </body>

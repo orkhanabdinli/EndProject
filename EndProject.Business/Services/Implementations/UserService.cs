@@ -119,4 +119,9 @@ public class UserService : IUserService
         await _userProfileMediaRepository.Table.AddAsync(backgroundImage);
         await _context.SaveChangesAsync();
     }
+
+    public async Task LogOutAsync()
+    {
+        await _signInManager.SignOutAsync();
+    }
 }

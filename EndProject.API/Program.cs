@@ -2,6 +2,7 @@ using EndProject.Business.ServiceRegistration;
 using EndProject.Core.Entities;
 using EndProject.Data.Contexts;
 using EndProject.Data.ServiceRegistration;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
