@@ -1,4 +1,5 @@
-﻿using EndProject.MVC.ViewModels;
+﻿using EndProject.MVC.Extencions;
+using EndProject.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -9,12 +10,10 @@ namespace EndProject.MVC.Controllers
     public class UserController : Controller
     {
         Uri baseAdress = new Uri("https://localhost:7032/api");
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly HttpClient _httpClient;
 
-        public UserController(IHttpClientFactory httpClientFactory, HttpClient httpClient)
+        public UserController(HttpClient httpClient)
         {
-            _httpClientFactory = httpClientFactory;
             _httpClient = httpClient;
         }
 
@@ -30,8 +29,9 @@ namespace EndProject.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var client = _httpClientFactory.CreateClient();
-                var response = await client.PostAsJsonAsync(baseAdress + "/User/Login", loginViewModel);
+                var dataStr = JsonConvert.SerializeObject(loginViewModel);
+                var stringContent = new StringContent(dataStr, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(baseAdress + "/User/Login", stringContent);
                 if (response.IsSuccessStatusCode)
                 {
                     var tokenResponse = await response.Content.ReadFromJsonAsync<TokenViewModel>();
@@ -68,8 +68,9 @@ namespace EndProject.MVC.Controllers
                 else
                 {
                     var errorResponse = await response.Content.ReadAsStringAsync();
-                    var apiError = JsonConvert.DeserializeObject<ErrorViewModel>(errorResponse);
-                    ModelState.AddModelError(string.Empty, apiError.Message);
+                    var simplifiedErrorMessage = SimplifyErrorResponse.SimplifyError(errorResponse);
+
+                    ModelState.AddModelError(string.Empty, simplifiedErrorMessage);
                 }
             }
             return View(registerViewModel);

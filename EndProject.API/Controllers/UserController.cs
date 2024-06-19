@@ -2,6 +2,7 @@
 using EndProject.Business.DTOs.UserDTOs;
 using EndProject.Business.Services.Interfaces;
 using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Authentication;

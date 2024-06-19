@@ -94,6 +94,7 @@ public class UserService : IUserService
             Gender = userRegisterDTO.Gender,
             Country = userRegisterDTO.Country,
             City = userRegisterDTO.City,
+            IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),
             UpdatedDate = DateTime.UtcNow.AddHours(4)
         };
@@ -103,6 +104,7 @@ public class UserService : IUserService
             UserId = appUser.Id,
             ImageUrl = $"{_env.WebRootPath}/DefaultImages/DefaultProfileImage.jpg",
             IsBackgroundImage = false,
+            IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),
             UpdatedDate = DateTime.UtcNow.AddHours(4)
         };
@@ -111,6 +113,7 @@ public class UserService : IUserService
             UserId = appUser.Id,
             ImageUrl = $"{_env.WebRootPath}/DefaultImages/DefaultBackgroundImage.jpg",
             IsBackgroundImage = true,
+            IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),
             UpdatedDate = DateTime.UtcNow.AddHours(4)
         };

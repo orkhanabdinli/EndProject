@@ -1,3 +1,4 @@
+using EndProject.Business.DTOValidators.UserAboutDTOValidators;
 using EndProject.Business.ServiceRegistration;
 using EndProject.Core.Entities;
 using EndProject.Data.Contexts;
@@ -13,7 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(opt =>
+{
+    opt.RegisterValidatorsFromAssembly(typeof(UserAboutPutDTOValidator).Assembly);
+}).AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 {

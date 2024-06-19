@@ -2,6 +2,6 @@
 
 namespace EndProject.Business.Services.Implementations;
 
-public class UserSettings : IUserSettings
+public class UserSettingsService : IUserSettingsService
 {
 }

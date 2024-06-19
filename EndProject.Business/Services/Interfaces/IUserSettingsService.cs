@@ -1,6 +1,6 @@
 ﻿namespace EndProject.Business.Services.Interfaces;
 
-public interface IUserSettings
+public interface IUserSettingsService
 {
 
 }
