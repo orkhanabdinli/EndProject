@@ -6,6 +6,10 @@ public static class FileManager
 {
     public static string SaveFile(this IFormFile file, string rootPath, string folderName)
     {
+        if (file == null) throw new ArgumentNullException(nameof(file));
+        if (string.IsNullOrEmpty(rootPath)) throw new ArgumentNullException(nameof(rootPath));
+        if (string.IsNullOrEmpty(folderName)) throw new ArgumentNullException(nameof(folderName));
+
         string fileName = file.FileName;
         fileName = fileName.Length > 64 ? fileName.Substring(fileName.Length - 64, 64) : fileName;
         fileName = Guid.NewGuid().ToString() + fileName; // 100
@@ -22,6 +26,10 @@ public static class FileManager
 
     public static void DeleteFile(string rootPath, string folderName, string fileName)
     {
+        if (string.IsNullOrEmpty(rootPath)) throw new ArgumentNullException(nameof(rootPath));
+        if (string.IsNullOrEmpty(folderName)) throw new ArgumentNullException(nameof(folderName));
+        if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException(nameof(fileName));
+
         string deletePath = Path.Combine(rootPath, folderName, fileName);
 
         if (System.IO.File.Exists(deletePath))

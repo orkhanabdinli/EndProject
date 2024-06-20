@@ -24,4 +24,8 @@
     <ProjectReference Include="..\EndProject.Business\EndProject.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\UserProfileMedias\" />
+  </ItemGroup>
+
 </Project>

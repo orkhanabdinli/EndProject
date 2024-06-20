@@ -18,8 +18,6 @@ public class UserService : IUserService
     private readonly SignInManager<AppUser> _signInManager;
     private readonly ITokenService _tokenService;
     private readonly IAppUserRepository _userRepository;
-    private readonly IConfiguration _configuration;
-    private readonly IWebHostEnvironment _env;
     private readonly IUserAboutRepository _userAboutRepository;
     private readonly IUserProfileMediaRepository _userProfileMediaRepository;
 
@@ -28,8 +26,6 @@ public class UserService : IUserService
         SignInManager<AppUser> signInManager,
         ITokenService tokenService,
         IAppUserRepository userRepository,
-        IConfiguration configuration,
-        IWebHostEnvironment env,
         IUserProfileMediaRepository userProfileMediaRepository,
         IUserAboutRepository userAboutRepository)
     {
@@ -38,8 +34,6 @@ public class UserService : IUserService
         _signInManager = signInManager;
         _tokenService = tokenService;
         _userRepository = userRepository;
-        _configuration = configuration;
-        _env = env;
         _userProfileMediaRepository = userProfileMediaRepository;
         _userAboutRepository = userAboutRepository;
     }
@@ -102,7 +96,7 @@ public class UserService : IUserService
         UserProfileMedia profileImage = new UserProfileMedia()
         {
             UserId = appUser.Id,
-            ImageUrl = $"{_env.WebRootPath}/DefaultImages/DefaultProfileImage.jpg",
+            ImageUrl = "/DefaultImages/DefaultProfileImage.jpg",
             IsBackgroundImage = false,
             IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),
@@ -111,7 +105,7 @@ public class UserService : IUserService
         UserProfileMedia backgroundImage = new UserProfileMedia()
         {
             UserId = appUser.Id,
-            ImageUrl = $"{_env.WebRootPath}/DefaultImages/DefaultBackgroundImage.jpg",
+            ImageUrl = "/DefaultImages/DefaultBackgroundImage.jpg",
             IsBackgroundImage = true,
             IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),

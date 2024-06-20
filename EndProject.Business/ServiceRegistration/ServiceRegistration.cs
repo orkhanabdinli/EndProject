@@ -17,5 +17,6 @@ public static class ServiceRegistiration
     {
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserProfileMediaService, UserProfileMediaService>();
     }
 }
