@@ -96,7 +96,7 @@ public class UserService : IUserService
         UserProfileMedia profileImage = new UserProfileMedia()
         {
             UserId = appUser.Id,
-            ImageUrl = "/DefaultImages/DefaultProfileImage.jpg",
+            ImageUrl = "~/DefaultImages/DefaultProfileImage.jpg",
             IsBackgroundImage = false,
             IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),
@@ -105,7 +105,7 @@ public class UserService : IUserService
         UserProfileMedia backgroundImage = new UserProfileMedia()
         {
             UserId = appUser.Id,
-            ImageUrl = "/DefaultImages/DefaultBackgroundImage.jpg",
+            ImageUrl = "~/DefaultImages/DefaultBackgroundImage.jpg",
             IsBackgroundImage = true,
             IsActive = true,
             CreatedDate = DateTime.UtcNow.AddHours(4),

@@ -10,7 +10,7 @@ namespace EndProject.Business.DTOs.UserProfileMediaDTOs
     public class UserProfileMediaPutDTO
     {
         public string UserId { get; set; }
-        public IFormFile ProfileImage { get; set; }
-        public IFormFile BackgroundImage { get; set; }
+        public IFormFile? ProfileImage { get; set; }
+        public IFormFile? BackgroundImage { get; set; }
     }
 }

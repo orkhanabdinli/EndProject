@@ -5,5 +5,5 @@ namespace EndProject.Business.Services.Interfaces;
 public interface IUserSettingsService
 {
     Task<UserAboutGetDTO> UserAboutGetAsync(string UserId);
-    Task UpdateUserAboutAsync(int Id, UserAboutPutDTO userAboutPutDTO);
+    //Task UpdateUserAboutAsync(string Id, UserAboutPutDTO userAboutPutDTO);
 }

@@ -1,4 +1,5 @@
 using EndProject.Business.DTOValidators.UserAboutDTOValidators;
+using EndProject.Business.MappingProfiles;
 using EndProject.Business.ServiceRegistration;
 using EndProject.Core.Entities;
 using EndProject.Data.Contexts;
@@ -53,8 +54,10 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+builder.Services.AddAuthorization();
 builder.Services.AddRepository();
 builder.Services.AddService();
+builder.Services.AddAutoMapper(typeof(UserAboutMapProfile));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
