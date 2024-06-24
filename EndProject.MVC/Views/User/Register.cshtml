@@ -97,13 +97,13 @@
                                 <div class="row mb-1">
                                     <div class="col-md-6">
                                         <div class="form-group icon-input">
-                                            <input asp-for="Password" type="text" class="style2-input form-control text-grey-900 font-xs fw-600" placeholder="Password">
+                                            <input asp-for="Password" type="Password" class="style2-input form-control text-grey-900 font-xs fw-600" placeholder="Password">
                                             <span asp-validation-for="Password" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group icon-input">
-                                            <input asp-for="ConfirmPassword" type="text" class="style2-input form-control text-grey-900 font-xs fw-600" placeholder="Confirm Password">
+                                            <input asp-for="ConfirmPassword" type="Password" class="style2-input form-control text-grey-900 font-xs fw-600" placeholder="Confirm Password">
                                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                     <div class="form-group mb-1">
                                         <button id="registerButton" type="submit" class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0">Register</button>
                                     </div>
-                                    <h6 class="text-grey-500 font-xs fw-500 mt-0 mb-0 lh-24">Already have an account? <a href="login.html" class="fw-700 ms-1">Login</a></h6>
+                                    <h6 class="text-grey-500 font-xs fw-500 mt-0 mb-0 lh-24">Already have an account? <a asp-action="Login" asp-controller="User" class="fw-700 ms-1">Login</a></h6>
                                 </div>
                             </form>
                         </div>

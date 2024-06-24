@@ -3,7 +3,6 @@ using EndProject.Business.DTOs.UserDTOs;
 using EndProject.Business.DTOs.UserProfileMediaDTOs;
 using EndProject.Business.Services.Interfaces;
 using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
-using EndProject.Business.Utilities.CustomExceptions.NotFoundExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Authentication;
@@ -73,8 +72,8 @@ namespace EndProject.API.Controllers
                 return BadRequest(new ErrorDTO { Message = ex.Message });
             }
         }
-        [HttpGet("[action]")]
-        public async Task<IActionResult> UserMediaGetAsync(string UserId)
+        [HttpGet("[action]/{UserId}")]
+        public async Task<IActionResult> UserMediaGet(string UserId)
         {
             try
             {
@@ -86,7 +85,7 @@ namespace EndProject.API.Controllers
             }
         }
         [HttpPut("[action]")]
-        public async Task<IActionResult> UserMediaUpdateAsync(UserProfileMediaPutDTO updateDTO)
+        public async Task<IActionResult> UserMediaUpdate(UserProfileMediaPutDTO updateDTO)
         {
             try
             {
@@ -98,42 +97,6 @@ namespace EndProject.API.Controllers
                 return BadRequest(new ErrorDTO { Message = ex.Message });
             }
         }
-        [HttpGet("[action]/{UserId}")]
-        public async Task<IActionResult> UserAboutGet(string UserId)
-        {
-            try
-            {
-                return Ok(await _userSettingsService.UserAboutGetAsync(UserId));
-            }
-            catch (UserNotFoundException ex)
-            {
-                return BadRequest(new ErrorDTO { Message = ex.Message });
-            }
-            catch (UserAboutNotFoundException ex)
-            {
-                return BadRequest(new ErrorDTO { Message = ex.Message });
-            }
-            catch (UserProfileMediaNotFoundException ex)
-            {
-                return BadRequest(new ErrorDTO { Message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new ErrorDTO { Message = ex.Message });
-            }
-        }
-        //[HttpPut("[action]/{UserId}")]
-        //public async Task<IActionResult> UserAboutUpdateAsync(string UserId, UserAboutPutDTO updateDTO)
-        //{
-        //    try
-        //    {
-        //        await _userSettingsService.UpdateUserAboutAsync(UserId, updateDTO);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(new ErrorDTO { Message = ex.Message });
-        //    }
-        //}
+        
     }
 }

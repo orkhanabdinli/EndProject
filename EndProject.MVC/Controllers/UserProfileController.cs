@@ -30,7 +30,7 @@ public class UserProfileController : Controller
         }
 
 
-        var response = await _httpClient.GetAsync(baseAddress + "/User/UserAboutGet/" + userId);
+        var response = await _httpClient.GetAsync(baseAddress + "/UserProfile/UserAboutGet/" + userId);
         var json1 = await response.Content.ReadAsStringAsync();
         var userInfo = JsonConvert.DeserializeObject<UserProfileViewModel>(json1);
 
