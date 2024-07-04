@@ -22,13 +22,13 @@ namespace EndProject.Business.DTOValidators.UserDTOValidators
                 .NotEmpty().WithMessage("UserName cannot be empty")
                 .MaximumLength(50).WithMessage("UserName length can be max 50 characters");
 
-            RuleFor(x => x.Gender)
-                .Must(BeAValidGender).WithMessage("Gender must be either Male, Female, or Prefer not to say");
+            //RuleFor(x => x.Gender)
+            //    .Must(BeAValidGender).WithMessage("Gender must be either Male, Female, or Prefer not to say");
         }
-        private bool BeAValidGender(string gender)
-        {
-            var allowedGenders = new[] { "Male", "Female", "Prefer not to say" };
-            return allowedGenders.Contains(gender);
-        }
+        //private bool BeAValidGender(string gender)
+        //{
+        //    var allowedGenders = new[] { "Male", "Female", "Prefer not to say" };
+        //    return allowedGenders.Contains(gender);
+        //}
     }
 }

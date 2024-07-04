@@ -11,7 +11,7 @@ public interface IAppUserRepository
     Task<int> CommitAsync();
     Task<List<AppUser>> GetAllAsync(Expression<Func<AppUser, bool>> expression = null, params string[] includes);
     Task<AppUser> GetSingleAsync(Expression<Func<AppUser, bool>> expression = null, params string[] includes);
-    Task<AppUser> GetByIdAsync(int id);
+    Task<AppUser> GetByIdAsync(string id);
     Task<bool> IsExist(Expression<Func<AppUser, bool>> expression);
     void Delete(AppUser user);
 }

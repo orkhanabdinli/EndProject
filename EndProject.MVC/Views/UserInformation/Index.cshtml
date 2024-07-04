@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "User Setting - Information";
+}
+@model UserProfileViewModel
+<div class="middle-sidebar-left">
+    <div class="middle-wrap">
+        <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+            <div class="card-body p-4 w-100 bg-current border-0 d-flex rounded-3">
+                <a asp-action="index" asp-controller="usersettings" class="d-inline-block mt-2"><i class="ti-arrow-left font-sm text-white"></i></a>
+                <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Account Details</h4>
+            </div>
+            <div class="card-body p-lg-5 p-4 w-100 border-0 ">
+                <div class="row justify-content-center">
+                    @if (Model.BackgroundImageUrl == "DefaultBackgroundImage")
+                    {
+                        <div class="card-body h250 p-0 rounded-xxl overflow-hidden m-3"><img src="@Url.Action("GetFile", "File", new { folderName = "DefaultImages", fileName = "DefaultBackgroundImage.jpg" })" alt="BackgroundImage"></div>
+                    }
+                    else
+                    {
+                        <div class="card-body h250 p-0 rounded-xxl overflow-hidden m-3"><img src="@Url.Action("GetFile", "File", new { folderName = "UserProfileMedias", fileName = Model.BackgroundImageUrl })" alt="BackgroundImage"></div>
+                    }
+                    <div class="col-lg-4 text-center">
+                        @if (Model.ProfileImageUrl == "DefaultProfileImage")
+                        {
+                            <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="@Url.Action("GetFile", "File", new { folderName = "DefaultImages", fileName = "DefaultProfileImage.jpg" })" alt="ProfileImage" class="shadow-sm rounded-3 w-100"></figure>
+                        }
+                        else
+                        {
+                            <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="@Url.Action("GetFile", "File", new { folderName = "UserProfileMedias", fileName = Model.ProfileImageUrl })" alt="ProfileImage" class="shadow-sm rounded-3 w-100"></figure>
+                        }
+                        <h2 class="fw-700 font-sm text-grey-900 mt-3">@Model.FirstName @Model.LastName</h2>
+                    </div>
+                </div>
+                <input type="hidden" id="userId" value="@Model.UserId">
+                <input type="hidden" id="userAboutId" value="@Model.UserAboutId">
+                <input type="hidden" id="tokenId" value="@Model.Token">
+                
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">First Name</label>
+                                <input id="firstNameId" asp-for="FirstName" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">Last Name</label>
+                                <input id="lastNameId" asp-for="LastName" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">Username</label>
+                                <input id="userNameId" asp-for="UserName" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">Gender</label>
+                            <select asp-for="Gender" id="genderId" class="form-control" aria-label=".form-select-lg example">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">Country</label>
+                                <input id="countryId" asp-for="Country" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label class="mont-font fw-600 font-xsss">City</label>
+                                <input id="cityId" asp-for="City" type=" text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <div class="card mt-3 border-0">
+                                <div class="card-body d-flex justify-content-between align-items-end p-0">
+                                    <div class="form-group mb-0 w-100">
+                                    <label class="mont-font fw-600 font-xsss">Profile Image</label>
+                                        <input type="file" id="profileImageId" asp-for="ProfileImageUrl" name="file" class="input-file">
+                                        <label for="profileImageId" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
+                                            <i class="ti-cloud-down large-icon me-3 d-block"></i>
+                                            <span class="js-fileName">Drag and drop or click to replace</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <div class="card mt-3 border-0">
+                                <div class="card-body d-flex justify-content-between align-items-end p-0">
+                                    <div class="form-group mb-0 w-100">
+                                    <label class="mont-font fw-600 font-xsss">Background Image</label>
+                                        <input type="file" id="backgroundImageId" asp-for="BackgroundImageUrl" name="file" class="input-file">
+                                        <label for="backgroundImageId" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
+                                            <i class="ti-cloud-down large-icon me-3 d-block"></i>
+                                            <span class="js-fileName">Drag and drop or click to replace</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 mb-3">
+                            <label class="mont-font fw-600 font-xsss">Bio</label>
+                            <input id="bioId" asp-for="Bio" class="form-control mb-0 p-3 h100 bg-greylight lh-16" rows="5" spellcheck="false"></input>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <button id="userAboutUpdateBtn" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Save</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- <div class="card w-100 border-0 p-2"></div> -->
+    </div>
+</div>

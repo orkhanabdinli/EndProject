@@ -40,7 +40,7 @@ public class AppUserRepository : IAppUserRepository
             : await query.ToListAsync();
     }
 
-    public async Task<AppUser> GetByIdAsync(int id)
+    public async Task<AppUser> GetByIdAsync(string id)
     {
         return await Table.FindAsync(id);
     }

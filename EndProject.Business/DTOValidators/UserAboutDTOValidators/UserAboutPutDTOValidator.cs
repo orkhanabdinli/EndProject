@@ -10,9 +10,6 @@ public class UserAboutPutDTOValidator : AbstractValidator<UserAboutPutDTO>
         RuleFor(x => x.UserId)
             .NotNull().WithMessage("UserId can not be null")
             .NotEmpty().WithMessage("UserId can not be empty");
-        RuleFor(x => x.Id)
-            .NotNull().WithMessage("Id can not be null")
-            .NotEmpty().WithMessage("Id can not be empty");
         RuleFor(x => x.Bio)
             .MaximumLength(300).WithMessage("Bio length can be max 300");
         RuleFor(x => x.Country)

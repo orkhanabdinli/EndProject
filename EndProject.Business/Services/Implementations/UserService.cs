@@ -2,6 +2,7 @@
 using EndProject.Business.DTOs.UserDTOs;
 using EndProject.Business.Services.Interfaces;
 using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
+using EndProject.Business.Utilities.CustomExceptions.NotFoundExceptions;
 using EndProject.Core.Entities;
 using EndProject.Core.Repositories;
 using EndProject.Data.Contexts;
@@ -56,6 +57,8 @@ public class UserService : IUserService
         if (user is not null) throw new AlreadyExistException(403, "Email already exist");
         var user1 = _userRepository.Table.FirstOrDefault(x => x.UserName == userRegisterDTO.UserName);
         if (user1 is not null) throw new AlreadyExistException(403, "Username already exist");
+        if (userRegisterDTO.Gender != "Male" || userRegisterDTO.Gender != "Female" || userRegisterDTO.Gender != "Prefer not to say")
+            throw new GenderNotFoundException(404, "Gender must be either Male, Female, or Prefer not to say");
         AppUser appUser = new()
         {
             FirstName = userRegisterDTO.FirstName,
@@ -102,6 +105,7 @@ public class UserService : IUserService
             CreatedDate = DateTime.UtcNow.AddHours(4),
             UpdatedDate = DateTime.UtcNow.AddHours(4)
         };
+
         UserProfileMedia backgroundImage = new UserProfileMedia()
         {
             UserId = appUser.Id,
@@ -111,6 +115,7 @@ public class UserService : IUserService
             CreatedDate = DateTime.UtcNow.AddHours(4),
             UpdatedDate = DateTime.UtcNow.AddHours(4)
         };
+
         await _userAboutRepository.Table.AddAsync(userAbout);
         await _userProfileMediaRepository.Table.AddAsync(profileImage);
         await _userProfileMediaRepository.Table.AddAsync(backgroundImage);
@@ -120,5 +125,12 @@ public class UserService : IUserService
     public async Task LogOutAsync()
     {
         await _signInManager.SignOutAsync();
+    }
+
+    public async Task ChangePassword(string Id, UserChangePasswordDTO userChangePasswordDTO)
+    {
+        var user = await _userRepository.GetByIdAsync(Id);
+        if (user is null) throw new UserNotFoundException("User not found");
+        var result = await _userManager.ChangePasswordAsync(user, userChangePasswordDTO.CurrentPassword, userChangePasswordDTO.NewPassword);
     }
 }

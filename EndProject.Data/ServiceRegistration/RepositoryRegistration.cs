@@ -16,6 +16,7 @@ public static class RepositoryRegistiration
         services.AddScoped<IUserAboutRepository, UserAboutRepository>();
         services.AddScoped<IFriendShipRepository, FriendShipRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IPostMediaRepository, PostMediaRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<ILikeRepository, LikeRepository>();
         services.AddScoped<IMessageRepository, MessageRepository>();

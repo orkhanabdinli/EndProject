@@ -7,5 +7,6 @@ public interface IUserService
 {
     Task<TokenResponseDTO> LoginAsync(UserLoginDTO userLoginDTO);
     Task RegisterAsync(UserRegisterDTO userRegisterDTO);
+    Task ChangePassword(string Id, UserChangePasswordDTO userChangePasswordDTO);
     Task LogOutAsync();
 }

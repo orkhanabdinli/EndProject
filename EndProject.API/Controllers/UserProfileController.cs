@@ -1,6 +1,7 @@
 ﻿using EndProject.Business.DTOs;
 using EndProject.Business.DTOs.UserSettingsDTOs.UserAboutDTOs;
 using EndProject.Business.Services.Interfaces;
+using EndProject.Business.Utilities.CustomExceptions.CommonExceptions;
 using EndProject.Business.Utilities.CustomExceptions.NotFoundExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,8 +13,6 @@ namespace EndProject.API.Controllers;
 public class UserProfileController : ControllerBase
 {
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly IUserService _userService;
-    private readonly IUserProfileMediaService _userProfileMediaService;
     private readonly IUserSettingsService _userSettingsService;
 
     public UserProfileController(RoleManager<IdentityRole> roleManager,
@@ -22,8 +21,6 @@ public class UserProfileController : ControllerBase
         IUserSettingsService userSettingsService)
     {
         _roleManager = roleManager;
-        _userService = userService;
-        _userProfileMediaService = userProfileMediaService;
         _userSettingsService = userSettingsService;
     }
     [HttpGet("[action]/{UserId}")]
@@ -50,13 +47,29 @@ public class UserProfileController : ControllerBase
             return BadRequest(new ErrorDTO { Message = ex.Message });
         }
     }
-    [HttpPut("[action]/{UserId}")]
-    public async Task<IActionResult> UserAboutUpdateAsync(string UserId, UserAboutPutDTO updateDTO)
+    [HttpPut("[action]/{Id}")]
+    public async Task<IActionResult> UserAboutUpdate(int Id, UserAboutPutDTO userAboutPutDTO)
     {
         try
         {
-            await _userSettingsService.UserAboutUpdateAsync(UserId, updateDTO);
+            await _userSettingsService.UserAboutUpdateAsync(Id, userAboutPutDTO);
             return Ok();
+        }
+        catch (InvalidIdException ex)
+        {
+            return BadRequest(new ErrorDTO { Message = ex.Message });
+        }
+        catch (UserAboutNotFoundException ex)
+        {
+            return BadRequest(new ErrorDTO { Message = ex.Message });
+        }
+        catch (UserProfileMediaNotFoundException ex)
+        {
+            return BadRequest(new ErrorDTO { Message = ex.Message });
+        }
+        catch (AlreadyExistException ex)
+        {
+            return BadRequest(new ErrorDTO { Message = ex.Message });
         }
         catch (Exception ex)
         {

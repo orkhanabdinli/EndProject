@@ -2,6 +2,7 @@
 @{
     Uri baseAddress = new Uri("https://localhost:7032/api");
     HttpClient httpClient = new HttpClient();
+    var token = Context.Session.GetString("JWToken");
     var userId = Context.Request.Cookies["UserId"];
     var response = await httpClient.GetAsync(baseAddress + "/User/UserMediaGet/" + userId);
     var json = await response.Content.ReadAsStringAsync();
@@ -30,7 +31,7 @@
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/emoji.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/lightbox.css">
 
 </head>
@@ -190,8 +191,14 @@
                 </div>
             </div>
 
-
-            <a asp-action="index" asp-controller="usersettings" class="p-0 ms-3 menu-icon"><img src="@viewModel.ProfileImageUrl" alt="user" class="w40 mt--1 rounded-circle"></a>
+            @if (viewModel.ProfileImageUrl == "DefaultProfileImage")
+            {
+                <a asp-action="Index" asp-controller="UserSettings" class="p-0 ms-3 menu-icon"><img src="@Url.Action("GetFile", "File", new { folderName = "DefaultImages", fileName = "DefaultProfileImage.jpg" })" alt="user" class="w40 mt--1 rounded-circle"></a>
+            }
+            else
+            {
+                <a asp-action="Index" asp-controller="UserSettings" class="p-0 ms-3 menu-icon"><img src="@Url.Action("GetFile", "File", new { folderName = "UserProfileMedias", fileName = viewModel.ProfileImageUrl })" alt="user" class="w40 mt--1 rounded-circle"></a>
+            }
 
         </div>
         <!-- navigation top -->
@@ -203,10 +210,10 @@
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span>New </span>Feeds</div>
                         <ul class="mb-1 top-content">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a asp-action="index" asp-controller="home" class="nav-content-bttn open-font"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
+                            <li><a asp-action="Index" asp-controller="Home" class="nav-content-bttn open-font"><i class="feather-tv btn-round-md bg-blue-gradiant me-3"></i><span>Newsfeed</span></a></li>
                             <li><a href="~/default-storie.html" class="nav-content-bttn open-font"><i class="feather-globe btn-round-md bg-gold-gradiant me-3"></i><span>Explore Stories</span></a></li>
                             <li><a href="~/default-group.html" class="nav-content-bttn open-font"><i class="feather-zap btn-round-md bg-mini-gradiant me-3"></i><span>Popular Groups</span></a></li>
-                            <li><a asp-action="index" asp-controller="UserProfile" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>My Profile </span></a></li>
+                            <li><a asp-action="Index" asp-controller="UserProfile" class="nav-content-bttn open-font"><i class="feather-user btn-round-md bg-primary-gradiant me-3"></i><span>My Profile </span></a></li>
                         </ul>
                     </div>
 
@@ -223,7 +230,7 @@
                         <div class="nav-caption fw-600 font-xssss text-grey-500"><span></span> Account</div>
                         <ul class="mb-1">
                             <li class="logo d-none d-xl-block d-lg-block"></li>
-                            <li><a href="~/default-settings.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
+                            <li><a asp-action="Index" asp-controller="UserSettings" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-settings me-3 text-grey-500"></i><span>Settings</span></a></li>
                             <li><a href="~/default-analytics.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-pie-chart me-3 text-grey-500"></i><span>Analytics</span></a></li>
                             <li><a href="~/default-message.html" class="nav-content-bttn open-font h-auto pt-2 pb-2"><i class="font-sm feather-message-square me-3 text-grey-500"></i><span>Chat</span><span class="circle-count bg-warning mt-0">23</span></a></li>
                         </ul>
@@ -482,32 +489,16 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="~/js/plugin.js"></script>
     <script src="~/js/lightbox.js"></script>
     <script src="~/js/scripts.js"></script>
     <script src="~/js/jquery.easypiechart.min.js"></script>
-    <script>
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const menuIcons = document.querySelectorAll('.menu-icon');
-
-            menuIcons.forEach(icon => {
-                icon.addEventListener('click', function () {
-                    // Remove the active class from all icons
-                    menuIcons.forEach(item => {
-                        item.querySelector('i').classList.remove('alert-primary', 'text-current');
-                        item.querySelector('i').classList.add('bg-greylight', 'text-grey-500');
-                    });
-
-                    // Add the active class to the clicked icon
-                    this.querySelector('i').classList.remove('bg-greylight', 'text-grey-500');
-                    this.querySelector('i').classList.add('alert-primary', 'text-current');
-                });
-            });
-        });
-
-    </script>
+    <script src="~/js/UpdateUserAbout.js"></script>
+    <script src="~/js/LogOut.js"></script>
+    <script src="~/js/ChangePassword.js"></script>
+    <script src="~/js/CreatePost.js"></script>
 
 </body>
 

@@ -1,19 +1,11 @@
 ﻿using EndProject.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace EndProject.MVC.Controllers
 {
-    public class UserSettings : Controller
+    public class ChangePasswordController : Controller
     {
-        private readonly HttpClient _httpClient;
-        public UserSettings(HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var token = HttpContext.Session.GetString("JWToken");
             var userId = HttpContext.Request.Cookies["UserId"];
@@ -21,7 +13,10 @@ namespace EndProject.MVC.Controllers
             {
                 return RedirectToAction("Login", "User");
             }
-            return View();
+            ChangePasswordViewModel changePasswordViewModel = new ChangePasswordViewModel();
+            changePasswordViewModel.UserId = userId;
+            changePasswordViewModel.Token = token;
+            return View(changePasswordViewModel);
         }
     }
 }

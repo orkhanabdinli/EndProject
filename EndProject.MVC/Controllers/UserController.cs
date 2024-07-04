@@ -68,9 +68,8 @@ namespace EndProject.MVC.Controllers
                 else
                 {
                     var errorResponse = await response.Content.ReadAsStringAsync();
-                    var simplifiedErrorMessage = SimplifyErrorResponse.SimplifyError(errorResponse);
-
-                    ModelState.AddModelError(string.Empty, simplifiedErrorMessage);
+                    var apiError = JsonConvert.DeserializeObject<ErrorViewModel>(errorResponse);
+                    ModelState.AddModelError(string.Empty, apiError.Message);
                 }
             }
             return View(registerViewModel);

@@ -5,6 +5,5 @@ namespace EndProject.Business.Services.Interfaces
     public interface IUserProfileMediaService
     {
         Task<UserProfileMediaGetDTO> UserProfileMediaGetAsync(string userId);
-        Task UpdateUserProfileMediaAsync(UserProfileMediaPutDTO updateDTO);
     }
 }

@@ -1,22 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Headers;
-using System.Net.Http;
+﻿using EndProject.MVC.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using EndProject.MVC.ViewModels;
 using System.Text;
 
 namespace EndProject.MVC.Controllers;
 
-public class UserProfileController : Controller
+public class UserInformationController : Controller
 {
     Uri baseAddress = new Uri("https://localhost:7032/api");
     private readonly HttpClient _httpClient;
-    public UserProfileController(HttpClient httpClient)
+    public UserInformationController(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
-
-    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var token = HttpContext.Session.GetString("JWToken");
@@ -28,15 +24,12 @@ public class UserProfileController : Controller
 
 
         var response = await _httpClient.GetAsync(baseAddress + "/UserProfile/UserAboutGet/" + userId);
-        var json = await response.Content.ReadAsStringAsync();
-        var userInfo = JsonConvert.DeserializeObject<UserProfileViewModel>(json);
-
-        var response1 = await _httpClient.GetAsync(baseAddress + "/Post/GetMyPosts/" + userId);
-        var json1 = await response1.Content.ReadAsStringAsync();
-        var posts = JsonConvert.DeserializeObject<List<PostViewModel>>(json1);
+        var json1 = await response.Content.ReadAsStringAsync();
+        var userInfo = JsonConvert.DeserializeObject<UserProfileViewModel>(json1);
 
         UserProfileViewModel viewModel = new UserProfileViewModel()
         {
+            Token = token,
             UserAboutId = userInfo.UserAboutId,
             UserId = userInfo.UserId,
             UserName = userInfo.UserName,
@@ -47,9 +40,8 @@ public class UserProfileController : Controller
             Country = userInfo.Country,
             City = userInfo.City,
             ProfileImageUrl = userInfo.ProfileImageUrl,
-            BackgroundImageUrl = userInfo.BackgroundImageUrl,
-            Posts = posts.OrderByDescending(x => x.PostId).ToList()
-    };
+            BackgroundImageUrl = userInfo.BackgroundImageUrl
+        };
         return View(viewModel);
     }
 }
